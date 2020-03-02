@@ -35,11 +35,11 @@ match c with
 (* green c -- Returns the green channel value for the color c *)
 let green (c : color) : int =
   match c with
-  | _, g, _ -> g ;;
+  | (_r, g, _b) -> g ;;
 
 (* blue c -- Returns the blue channel value for the color c *)
 let blue (c : color) : int =
-  | _, _, b -> b ;;
+  | (_r, _g, b) -> b ;;
 
 (* color_named name -- Returns the color (as RGB representation)
    corresponding to the color name *)

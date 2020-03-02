@@ -122,7 +122,7 @@ with the elements inverted, *without using any of the `IntListStack`
 methods*.
 ......................................................................*)
 
-let invert_stack (s : IntListStack.stack) : IntListStack.stack =
+let invert_stack : IntList.Stack.stack -> IntListStack.stack =
   List.rev ;;
 
 (* Now what would be the result of the top operation on a stack
