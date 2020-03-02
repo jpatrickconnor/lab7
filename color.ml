@@ -39,6 +39,7 @@ let green (c : color) : int =
 
 (* blue c -- Returns the blue channel value for the color c *)
 let blue (c : color) : int =
+  match c with 
   | (_r, _g, b) -> b ;;
 
 (* color_named name -- Returns the color (as RGB representation)
