@@ -57,11 +57,14 @@ temporary value pending your putting in appropriate ones.)
 
 module Math : MATH =
   struct
-    let pi = 3.1415
-    let cos x = cos(x)
-    let sin x = sin(x)
-    let sum x y = x + y
-    let max lst = if List.length(lst) = 0 then None else Some List.fold_left (max) (List.hd lst) lst
+    let pi = 3.14159
+    let cos = cos
+    let sin = sin
+    let sum = (+.)
+    let max lst =
+      match lst with
+      | [] -> None
+      | hd :: tl -> Some (List.fold_left max hd tl)
   end ;;
 
 (*......................................................................
@@ -72,8 +75,8 @@ module prefixes for this exercise, not global or local opens.)
 ......................................................................*)
 
 let result =
-  let lst = [Math.cos(Math.pi); Math.sin(Math.pi)] in
-  Math.max lst ;;
+  Math.max [Math.cos(Math.pi); Math.sin(Math.pi)] ;;
+
 
 (*......................................................................
 Exercise 1C: Reimplement the computation from 1B above, now as
@@ -82,5 +85,5 @@ in a more succinct manner.
 ......................................................................*)
 
 let result_local_open =
-  open Math in
-  Some max [cos(pi); sin(pi)] ;;
+  let open Math in
+  max [cos(pi); sin(pi)] ;;

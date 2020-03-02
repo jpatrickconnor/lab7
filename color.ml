@@ -29,7 +29,8 @@ let to_color (r : int) (g : int) (b : int) : color =
 
 (* red c -- Returns the red channel value for the color c *)
 let red (c : color) : int =
-  | r, _, _ -> r ;;
+match c with
+| (r, _g, _b) -> r ;;
 
 (* green c -- Returns the green channel value for the color c *)
 let green (c : color) : int =
@@ -43,11 +44,11 @@ let blue (c : color) : int =
 (* color_named name -- Returns the color (as RGB representation)
    corresponding to the color name *)
 let color_named (name : color_name) : color =
-  match name with
-  | Red ->    (255, 0, 0)
-  | Green ->  (0, 255, 0)
-  | Blue ->   (0, 0, 255)
-  | Orange -> (255, 165, 0)
-  | Yellow -> (255, 255, 0)
-  | Indigo -> (75, 0, 130)
-  | Violet -> (240, 130, 240) ;;
+match name with
+| Red ->    to_color 255    0    0
+| Green ->  to_color   0  255    0
+| Blue ->   to_color   0    0  255
+| Orange -> to_color 255  165    0
+| Yellow -> to_color 255  255    0
+| Indigo -> to_color  75    0  130
+| Violet -> to_color 240  130  240 ;;
